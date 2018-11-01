@@ -1,19 +1,21 @@
 <template>
-  <div class="col-sm-6 col-md-4">
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title">
-          {{ stock.name }}
-          <small>(Price: {{ stock.price }})</small>
-        </h4>
+  <div class="card w-25">
+    <div class="card-header">
+      <h4 class="card-title">
+        {{ stock.name }}
+        <small>(Price: {{ stock.price }})</small>
+      </h4>
+    </div>
+    <div class="card-body">
+      <div class="float-left">
+        <input type="number" class="form-control" placeholder="Quantity" v-model.number="quantity">
       </div>
-      <div class="card-body">
-        <div class="float-left">
-          <input type="number" class="form-control" placeholder="Quantity" v-model.number="quantity">
-        </div>
-        <div class="float-right">
-          <button class="btn btn-success" @click="buyStock" :disabled="quantity <= 0 || !Number.isInteger(quantity)">Buy</button>
-        </div>
+      <div class="float-right">
+        <button
+          class="btn btn-success"
+          @click="buyStock"
+          :disabled="quantity <= 0 || !Number.isInteger(quantity)"
+        >Buy</button>
       </div>
     </div>
   </div>
@@ -34,7 +36,7 @@ export default {
         stockPrice: this.stock.price,
         quantity: this.quantity
       }
-      console.log(order)
+      this.$store.dispatch('buyStock', order)
       this.quantity = 0
     }
   }
