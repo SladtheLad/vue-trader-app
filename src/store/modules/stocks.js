@@ -12,8 +12,11 @@ const mutations = {
     //Transforms each stock in the state's array to a random price
     //and ensures a rounded integer
     state.stocks.forEach(stock => {
-      stock.price += Math.round(stock.price * (0.5 - Math.random() / 6)) 
-      console.log(stock.price)
+      if (stock.price < 100) {
+        stock.price = Math.round(stock.price * (1 + Math.random()))
+      } else {
+        stock.price = Math.round(stock.price * (1 + Math.random() - 0.5))
+      }
     })
   }
 }
