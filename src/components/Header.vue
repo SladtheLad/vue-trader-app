@@ -11,9 +11,9 @@
         </router-link>
       </ul>
       <ul class="navbar-nav navbar-right">
-        <router-link to="#" activeClass="active" tag="li">
-          <a class="nav-link" @click="endDay">End Day</a>
-        </router-link>
+        <li activeClass="active">
+          <a href="#" class="nav-link" @click="endDay">End Day</a>
+        </li>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
