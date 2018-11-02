@@ -1,5 +1,5 @@
 <template>
-  <div class="card-deck">
+  <div class="row card-deck">
     <app-stock v-for="stock in stocks" :key="stock" :stock="stock"></app-stock>
   </div>
 </template>

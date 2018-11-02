@@ -1,29 +1,30 @@
 <template>
-    <div class="card w-25">
-      <div class="card-header">
-        <h4 class="card-title">
-          {{ stock.name }}
-          <small>(Price: {{ stock.price }} | Quantity: {{ stock.quantity }})</small>
-        </h4>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">
+        {{ stock.name }}
+        <small>(Price: {{ stock.price }} | Quantity: {{ stock.quantity }})</small>
+      </h4>
+    </div>
+    <div class="card-body">
+      <div class="w-75">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Quantity"
+          v-model.number="quantity"
+          :class="{danger: insufficientQuantity}"
+        >
       </div>
-      <div class="card-body">
-        <div class="float-left">
-          <input
-            type="number"
-            class="form-control"
-            placeholder="Quantity"
-            v-model.number="quantity"
-          >
-        </div>
-        <div class="float-right">
-          <button
-            class="btn btn-success"
-            @click="sellStock"
-            :disabled="quantity <= 0 || !Number.isInteger(quantity)"
-          >Sell</button>
-        </div>
+      <div class="w-25">
+        <button
+          class="btn btn-success"
+          @click="sellStock"
+          :disabled="insufficientQuantity || quantity <= 0 || !Number.isInteger(quantity)"
+        >{{ insufficientQuantity ? 'Not Enough Stocks' : 'Sell'}}</button>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -34,6 +35,11 @@ export default {
   data() {
     return {
       quantity: 0
+    }
+  },
+  computed: {
+    insufficientQuantity() {
+      return this.quantity > this.stock.quantity
     }
   },
   methods: {
@@ -52,3 +58,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.danger {
+  border: 1px solid red;
+}
+</style>

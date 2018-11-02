@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-25">
+  <div class="card">
     <div class="card-header">
       <h4 class="card-title">
         {{ stock.name }}
@@ -7,15 +7,21 @@
       </h4>
     </div>
     <div class="card-body">
-      <div class="float-left">
-        <input type="number" class="form-control" placeholder="Quantity" v-model.number="quantity">
+      <div class="w-75">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Quantity"
+          v-model.number="quantity"
+          :class="{danger: insufficientFunds}"
+        >
       </div>
-      <div class="float-right">
+      <div class="w-25">
         <button
           class="btn btn-success"
           @click="buyStock"
-          :disabled="quantity <= 0 || !Number.isInteger(quantity)"
-        >Buy</button>
+          :disabled=" insufficientFunds || quantity <= 0 || !Number.isInteger(quantity)"
+        >{{ insufficientFunds ? 'Insufficient Funds' : 'Buy'}}</button>
       </div>
     </div>
   </div>
@@ -27,6 +33,14 @@ export default {
   data() {
     return {
       quantity: 0
+    }
+  },
+  computed: {
+    funds() {
+      return this.$store.getters.funds
+    },
+    insufficientFunds() {
+      return this.quantity * this.stock.price > this.funds
     }
   },
   methods: {
@@ -42,3 +56,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.danger {
+  border: 1px solid red;
+}
+</style>
+
