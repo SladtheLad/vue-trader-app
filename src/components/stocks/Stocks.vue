@@ -1,6 +1,6 @@
 <template>
   <div class="row card-deck">
-    <app-stock v-for="stock in stocks" :key="stock" :stock="stock"></app-stock>
+    <app-stock v-for="stock in stocks" :key="stock.id" :stock="stock"></app-stock>
   </div>
 </template>
 

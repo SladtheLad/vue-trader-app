@@ -8,7 +8,14 @@ const mutations = {
   SET_STOCKS(state, stocks) {
     state.stocks = stocks
   },
-  RND_STOCKS(state) {}
+  RND_STOCKS(state) {
+    //Transforms each stock in the state's array to a random price
+    //and ensures a rounded integer
+    state.stocks.forEach(stock => {
+      stock.price += Math.round(stock.price * (0.5 - Math.random() / 6)) 
+      console.log(stock.price)
+    })
+  }
 }
 
 const actions = {
