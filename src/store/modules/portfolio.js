@@ -24,6 +24,11 @@ const mutations = {
       state.stocks.splice(state.stocks.indexOf(record), 1)
     }
     state.funds += stockPrice * quantity
+  },
+  SET_PORTFOLIO (state, portfolio) {
+    state.funds = portfolio.funds
+    //checks if there exist any stocks, otherwise reset to empty array
+    state.stocks = portfolio.stockPortfolio ? portfolio.stockPortfolio : []
   }
 }
 
