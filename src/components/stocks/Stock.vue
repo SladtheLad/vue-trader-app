@@ -3,10 +3,9 @@
     <div class="card-header">
       <h4 class="card-title">
         {{ stock.name }}
-        <small>(Price: {{ stock.price }})</small>
       </h4>
     </div>
-    <div class="card-body">
+    <div class="card-body row">
       <div class="w-75">
         <input
           type="number"
@@ -23,6 +22,9 @@
           :disabled=" insufficientFunds || quantity <= 0 || !Number.isInteger(quantity)"
         >{{ insufficientFunds ? 'Insufficient Funds' : 'Buy'}}</button>
       </div>
+    </div>
+    <div class="card-footer">
+      <small class="small-text">(Price: {{ stock.price }})</small>
     </div>
   </div>
 </template>

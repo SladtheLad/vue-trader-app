@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <app-header></app-header>
-    <div class="row">
-      <div class="col-xs-12">
+    <div>
+      <div>
         <transition name="slide" mode="out-in">
           <router-view></router-view>
         </transition>
@@ -27,6 +27,12 @@ export default {
 <style>
 body {
   padding: 30px;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+.small-text {
+  font-family: 'Montserrat', sans-serif;
 }
 
 .slide-enter-active {
