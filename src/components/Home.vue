@@ -21,6 +21,13 @@ export default {
 }
 </script>
 
+<style>
+p {
+  color: #21ce99;
+}
+</style>
+
+
 
 
 

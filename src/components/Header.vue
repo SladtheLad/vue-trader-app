@@ -1,35 +1,37 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" to="/">Stock Trader</router-link>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto">
-        <router-link to="/portfolio" activeClass="active" tag="li">
-          <a class="nav-link">Portfolio</a>
-        </router-link>
-        <router-link to="/stocks" activeClass="active" tag="li">
-          <a class="nav-link">Stocks</a>
-        </router-link>
-      </ul>
-      <ul class="navbar-nav navbar-right">
-        <li activeClass="active">
-          <a href="#" class="nav-link" @click="endDay">End Day</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >Save & Load</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#" @click="saveData">Save Data</a>
-            <a class="dropdown-item" href="#" @click="loadData">Load Data</a>
-          </div>
-        </li>
-      </ul>
-      <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
+  <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+    <div class="container">
+      <router-link class="navbar-brand" to="/">Stock Trader</router-link>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <router-link to="/portfolio" activeClass="active" tag="li">
+            <a class="nav-link">Portfolio</a>
+          </router-link>
+          <router-link to="/stocks" activeClass="active" tag="li">
+            <a class="nav-link">Stocks</a>
+          </router-link>
+        </ul>
+        <ul class="navbar-nav navbar-right">
+          <li activeClass="active">
+            <a href="#" class="nav-link" @click="endDay">End Day</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >Save & Load</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#" @click="saveData">Save Data</a>
+              <a class="dropdown-item" href="#" @click="loadData">Load Data</a>
+            </div>
+          </li>
+        </ul>
+        <span class="navbar-text navbar-right">Funds: {{ funds | currency }}</span>
+      </div>
     </div>
   </nav>
 </template>
@@ -70,5 +72,16 @@ export default {
   }
 }
 </script>
+
+
+<style>
+nav a {
+  color: #20ce99;
+}
+
+nav a:hover {
+  color: black;
+}
+</style>
 
 
