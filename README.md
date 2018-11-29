@@ -1,6 +1,11 @@
 # vue-trader-app
 
-> A Vue.js project
+A basic simulation of a stock trading web app using Vue.js, Vuex, VueRouter, Bootstrap, vanilla animations, and a Firebase backend.
+
+## TO-DO
+
++ Restyling
++ Think of some added functionality
 
 ## Build Setup
 
